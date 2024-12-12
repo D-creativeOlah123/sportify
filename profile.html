@@ -1,0 +1,896 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile Page</title>
+    <style>
+        * {
+        margin: 0;
+        padding: 0;
+        font-family: Arial, Helvetica, sans-serif;
+        outline: 2px solid white;
+    }
+    .circle {
+        width: 180px;
+        height: 180px;
+        background-color: rgb(40,40,40);
+        border-radius: 50%;
+        align-items: center;
+        justify-content: center;
+    }
+    .svg {
+        width: 100px;
+        height: 100px;
+    }
+    .olaide {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        background-color: rgb(71,71,71);
+    }
+    #idea {
+        padding: 20px;
+        padding-top: 7rem;
+        gap: 20px;
+        background-color: rgb(71,71,71);
+    }
+    #next {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+    }
+    #three {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        gap: 16rem;
+    }
+    #big {
+        display: flex;
+        flex-direction: column;
+        /* gap: 5rem; */
+    }
+    .spotify-playlists {
+            padding: 10px 0px;
+        }
+
+        .spotify-playlists h2 {
+            color: #ffffff;
+            font-size: 22px;
+            margin-bottom: 20px;
+            cursor: pointer;
+        }
+
+        .spotify-playlists .list {
+            display: flex;
+            flex-direction: row;
+            gap: 5px;
+            overflow: hidden;
+        }
+
+        .spotify-playlists .list .item {
+            min-width: 200px;
+            width: 160px;
+            padding: 10px;
+            display: flex;
+            flex-direction: column;
+            /* background-color: #181818; */
+            border-radius: 6px;
+            cursor: pointer;
+            transition: all ease 0.4s;
+        }
+
+        .spotify-playlists .list .item:hover {
+            background-color: #252525;
+        }
+
+
+
+        .spotify-playlists .list .item img {
+            width: 100%;
+            border-radius: 50%;
+            margin-bottom: 10px;
+        }
+
+        .spotify-playlists .list .item .play {
+            position: relative;
+        }
+
+        .spotify-playlists .list .item .play .fa {
+            position: absolute;
+            right: 10px;
+            top: -60px;
+            padding: 18px;
+            background-color: #1db954;
+            border-radius: 100%;
+            opacity: 0;
+            transition: all ease 0.4s;
+        }
+
+        .spotify-playlists .list .item:hover .play .fa {
+            opacity: 1;
+            transform: translateY(-20px);
+        }
+
+        .spotify-playlists .list .item h4 {
+            color: #ffffff;
+            font-size: 14px;
+            margin-bottom: 10px;
+            font-weight: 600;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .spotify-playlists .list .item p {
+            color: #989898;
+            font-size: 12px;
+            line-height: 20px;
+            font-weight: 500;
+        }
+
+
+
+
+
+
+    
+    .spotify-playlistss {
+    padding: 20px 40px;
+    
+}
+
+
+.spotify-playlistss h2 {
+    color: #ffffff;
+    font-size: 22px;
+    margin-bottom: 20px;
+    cursor: pointer;
+}
+
+.spotify-playlistss .list {
+    display: flex;
+    gap: 20px;
+    overflow: hidden;
+}
+
+.spotify-playlistss .list .item {
+    min-width: 180px;
+    width: 160px;
+    padding: 15px;
+    /* background-color: #181818; */
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all ease 0.4s;
+}
+
+.spotify-playlistss .list .item:hover {
+    background-color: #252525;
+}
+
+
+
+.spotify-playlistss .list .item img {
+    width: 100%;
+    border-radius: 10px;
+    margin-bottom: 10px;
+}
+
+.spotify-playlistss .list .item .play {
+    position: relative;
+}
+
+.spotify-playlistss .list .item .play .fa {
+    position: absolute;
+    right: 10px;
+    top: -60px;
+    padding: 18px;
+    background-color: #1db954;
+    border-radius: 100%;
+    opacity: 0;
+    transition: all ease 0.4s;
+}
+
+.spotify-playlistss .list .item:hover .play .fa {
+    opacity: 1;
+    transform: translateY(-20px);
+}
+
+.spotify-playlistss .list .item h4 {
+    color: #ffffff;
+    font-size: 14px;
+    margin-bottom: 10px;
+    font-weight: 600;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.spotify-playlistss .list .item p {
+    color: #989898;
+    font-size: 12px;
+    line-height: 20px;
+    font-weight: 500;
+}
+
+.spotify-playlistss hr {
+    margin: 70px 0px 0px;
+    border-color: #636363;
+}
+.spotify-playlistss h2:hover{
+    text-decoration-line: underline;
+}
+.spotify-playlists h2:hover{
+    text-decoration-line: underline;
+}
+
+    body {
+        background-color: blue;
+        font-family: Arial, Helvetica, sans-serif;
+        margin: 0;
+        padding: 0;
+        color: white;
+    }
+
+    nav {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 10px 20px;
+        background-color: black;
+    }
+
+    nav ul {
+        list-style-type: none;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 20px;
+        text-align: center;
+    }
+
+    .logo {
+
+        display: block;
+        justify-content: right;
+        align-items: right;
+        gap: 20px;
+
+    }
+
+
+    nav li a {
+        text-decoration: none;
+        color: white;
+        font-size: 30px;
+    }
+
+    button {
+        width: 450px;
+        height: 50px;
+        background-color: rgb(31, 31, 31);
+        color: rgb(167, 167, 167);
+        border-radius: 20px;
+        font-size: 20px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+    }
+
+    .button2 {
+        width: 150px;
+        height: 40px;
+        border-radius: 20px 20px;
+        background-color: white;
+        color: black;
+        font-size: 15px;
+        font-weight: 700;
+        text-decoration: none;
+    }
+
+    .abutton2 {
+        text-decoration: none;
+        color: black;
+    }
+
+    svg {
+        width: 30px;
+        height: 30px;
+        align-items: left;
+        display: inline;
+    }
+
+    p {
+        font-size: 15px;
+        color: white;
+        display: flex;
+        text-align: center;
+    }
+
+    .asearch {
+        font-size: 15px;
+    }
+
+    .nav {
+        justify-content: center;
+        align-items: center;
+        display: flex;
+        text-align: center;
+    }
+
+    .profile {
+        width: 30px;
+        height: 30px;
+        background-color: red;
+        border-radius: 50%;
+        text-align: center;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .container {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+    }
+
+    .image-container {
+        /* position: relative; */
+        display: flex;
+        flex-direction: row;
+        gap: 5px;
+    }
+
+    .image {
+        width: 08vh;
+        /* Adjust as needed */
+        height: 08vh;
+        border-radius: 8px;
+        /* Rounded corners for the image */
+    }
+
+    .play-icon {
+        position: absolute;
+        top: 37%;
+        right: 94%;
+        transform: translate(-50%, -50%);
+        font-size: 24px;
+        /* Smaller font size for the play icon */
+        /* background-color: green; */
+        padding: 8px;
+        /* Reduced padding for smaller size */
+        border-radius: 50%;
+        /* Circular background */
+        color: white;
+        opacity: 0;
+        /* Initially hidden */
+        pointer-events: none;
+        transition: opacity 0.3s ease, transform 0.3s ease;
+        /* Smooth fade-in effect */
+        margin-left: 250px;
+    }
+
+    .image-container:hover .play-icon {
+        opacity: 1;
+        /* Show the play icon on hover */
+        pointer-events: auto;
+        transform: translate(-50%, -50%) scale(1.1);
+        /* Slightly scale up on hover */
+    }
+
+    .yu {
+        /* background-color: #4c363e; */
+        /* Initial background color */
+        width: 250px;
+        height: 50px;
+        border-radius: 6px;
+        transition: background-color 0.3s ease;
+        /* Smooth background color transition */
+    }
+    .yuu{
+        /* background-color: #4c363e; */
+        /* Initial background color */
+        width: 150px;
+        height: 50px;
+        border-radius: 6px;
+        transition: background-color 0.3s ease;
+        /* Smooth background color transition */
+    }
+
+    .image-container:hover+.yu {
+        background-color: #6b4e57;
+        /* Change background color on hover */
+    }
+    h1 {
+        font-size: 50px;
+        font-weight: 900;
+        color: white;
+    }
+    .h1b {
+        font-size: 30px;
+        font-weight: 700;
+        color: white;
+    }
+
+    .text {
+        color: white;
+        font-size: 15px;
+        font-weight: bolder;
+        padding: 10px;
+        text-align: start;
+        align-items: flex-start;
+        justify-content: flex-start;
+        margin: 0;
+
+
+    }
+    
+
+    section {
+        background-color: black;
+        display: flex;
+        gap: 1.5%;
+
+
+    }
+
+    #left {
+        background-color: rgb(21, 21, 21);
+        width: 25%;
+        height: 500px;
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        overflow-y: scroll;
+        margin: 10px;
+        padding: 20px;
+        border-radius: 10px;
+    }
+
+    #right {
+        background-color:black;
+        width: 72%;
+        height: 500px;
+        overflow-y: scroll;
+        display: flex;
+        flex-direction: column;
+        gap: 30px;
+        padding: 10px;
+        border-radius: 10px;
+        /* margin: 10px; */
+
+    }
+
+    .flex {
+        /* background-color: blue; */
+        display: flex;
+        gap: 14rem;
+    }
+
+    #button {
+        /* background-color: red; */
+        display: flex;
+        gap: 5px;
+    }
+
+    .button3 {
+        width: 100px;
+        height: 40px;
+        background-color: rgb(42, 42, 42);
+        color: white;
+        font-size: 15px;
+        font-weight: 600;
+        border: none;
+    }
+
+    #sticky {
+        display: flex;
+        position: sticky;
+    }
+
+    .buttonholder {
+        /* background-color: red; */
+
+    }
+
+    #images {
+
+        display: flex;
+        flex-direction: column;
+
+    }
+
+    .p9 {
+        text-align: start;
+    }
+
+    .img {
+        width: 135px;
+        height: 135px;
+        border-radius: 5px;
+    }
+
+    .img2 {
+        width: 135px;
+        height: 135px;
+        border-radius: 50%;
+        background-color: blue;
+    }
+
+    .img3 {
+        width: 450px;
+        height: 450px;
+        border-radius: 5px;
+        background-color: blue;
+    }
+
+    .row {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    #row {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        gap: 20px;
+    }
+    .logoimg {
+    width: 50px;
+}
+#footer {
+    display: flex;
+    flex-direction: row;
+    gap: 0.5rem;
+    padding: 10px;
+    color: white;
+}
+.line {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin: auto;
+    /* background-color: blue; */
+}
+h5 {
+    font-size: 20px;
+}
+.hfives {
+    font-size: 15px;
+    font-weight: 300;
+}
+.line2 {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 1rem;
+    color: aquamarine;
+    /* font-weight: 400;
+    background-color: aquamarine; */
+}
+.linep {
+    font-weight: 600;
+    color: rgb(177,177,177);
+    font-size: 15px;
+
+}
+
+
+</style>
+</head>
+
+<body>
+<nav>
+    <div class="logo"><img class="logoimg" src="./imagess/logo.png" alt=""></div>
+    <ul>
+        <li><a href="#"><svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px"
+                    fill="#b3b3b3">
+                    <path
+                        d="M240-200h120v-240h240v240h120v-360L480-740 240-560v360Zm-80 80v-480l320-240 320 240v480H520v-240h-80v240H160Zm320-350Z" />
+                </svg></svg></a></li>
+        <li>
+            <button>
+                <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px"
+                    fill="#b3b3b3">
+                    <path
+                        d="M784-120 532-372q-30 24-69 38t-83 14q-109 0-184.5-75.5T120-580q0-109 75.5-184.5T380-840q109 0 184.5 75.5T640-580q0 44-14 83t-38 69l252 252-56 56ZM380-400q75 0 127.5-52.5T560-580q0-75-52.5-127.5T380-760q-75 0-127.5 52.5T200-580q0 75 52.5 127.5T380-400Z" />
+                </svg>
+                <p><a class="asearch" href="search page.html">What do you want to play?</a></p>
+                <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px"
+                    fill="#b3b3b3">
+                    <path
+                        d="M240-120v-80l40-40H160q-33 0-56.5-23.5T80-320v-440q0-33 23.5-56.5T160-840h320v80H160v440h640v-120h80v120q0 33-23.5 56.5T800-240H680l40 40v80H240Zm360-240L400-560l56-56 104 103v-327h80v327l104-103 56 56-200 200Z" />
+                </svg>
+            </button>
+        </li>
+    </ul>
+
+    <ul>
+        <div class="nav">
+            <button class="button2"><a class="abutton2" href="signup.html">Explore Minimum</a></button>
+
+            <p><svg xmlns="http://www.w3.org/2000/svg" height="15px" viewBox="0 -960 960 960" width="15px"
+                    fill="#434343">
+                    <path
+                        d="m480-336 144-144-51-51-57 57v-150h-72v150l-57-57-51 51 144 144Zm0 240q-79 0-149-30t-122.5-82.5Q156-261 126-331T96-480q0-80 30-149.5t82.5-122Q261-804 331-834t149-30q80 0 149.5 30t122 82.5Q804-699 834-629.5T864-480q0 79-30 149t-82.5 122.5Q699-156 629.5-126T480-96Zm0-72q130 0 221-91t91-221q0-130-91-221t-221-91q-130 0-221 91t-91 221q0 130 91 221t221 91Zm0-312Z" />
+                </svg>
+                Install apps</p>
+            <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px"
+                fill="#434343">
+                <path
+                    d="M160-200v-80h80v-280q0-83 50-147.5T420-792v-28q0-25 17.5-42.5T480-880q25 0 42.5 17.5T540-820v28q80 20 130 84.5T720-560v280h80v80H160Zm320-300Zm0 420q-33 0-56.5-23.5T400-160h160q0 33-23.5 56.5T480-80ZM320-280h320v-280q0-66-47-113t-113-47q-66 0-113 47t-47 113v280Z" />
+            </svg>
+            <div class="profile">
+                <p><a href="#">O</a></p>
+            </div>
+        </div>
+    </ul>
+</nav>
+
+<section>
+    <section id="left">
+        <section id="sticky">
+            <div class="ex1">
+                <section class="one">
+                    <p> <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px"
+                            fill="#b3b3b3">
+                            <path
+                                d="M240-80q-50 0-85-35t-35-85v-560q0-50 35-85t85-35h440v640H240q-17 0-28.5 11.5T200-200q0 17 11.5 28.5T240-160h520v-640h80v720H240Zm120-240h240v-480H360v480Zm-80 0v-480h-40q-17 0-28.5 11.5T200-760v447q10-3 19.5-5t20.5-2h40Zm-80-480v487-487Z" />
+                        </svg>Your Library <svg xmlns="http://www.w3.org/2000/svg" height="24px"
+                            viewBox="0 -960 960 960" width="24px" fill="#b3b3b3">
+                            <path d="M440-440H200v-80h240v-240h80v240h240v80H520v240h-80v-240Z" />
+                        </svg> </p>
+                </section>
+                <section id="button">
+                    <button class="button3">Playlist</button>
+                    <button class="button3">Artist</button>
+                    <button class="button3">Album</button>
+                </section>
+        </section>
+
+        <div class="container">
+            <div class="flex">
+                <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px"
+                    fill="#b3b3b3">
+                    <path
+                        d="M784-120 532-372q-30 24-69 38t-83 14q-109 0-184.5-75.5T120-580q0-109 75.5-184.5T380-840q109 0 184.5 75.5T640-580q0 44-14 83t-38 69l252 252-56 56ZM380-400q75 0 127.5-52.5T560-580q0-75-52.5-127.5T380-760q-75 0-127.5 52.5T200-580q0 75 52.5 127.5T380-400Z" />
+
+                </svg>
+                <p>Recents</p>
+            </div>
+
+            <div class="image-container">
+                <img class="image" src="./imagess/ab67616100005174f4dd6003298a8976584cd573.png" alt="an image">
+
+                <div class="play-icon">
+                    <span>&#9658;</span>
+                    Play icon
+                </div>
+
+                <div class="yu">
+                    <h1 class="text">Liked songs <br>Playlist.2songs</h1>
+                </div>
+            </div>
+            <!-- </div> -->
+            <div class="image-container">
+                <img class="image" src="./imagess/ab67fb8200005caf3a44e7ae3d808c220898185c.png" alt="an image">
+
+                <div class="play-icon">
+                    <span>&#9658;</span>
+                    <!-- Play icon -->
+                </div>
+
+                <div class="yu">
+                    <h1 class="text">Liked songs <br>Playlist.2songs</h1>
+                </div>
+            </div>
+            <!-- </div> -->
+            <div class="image-container">
+                <img class="image" src="./imagess/bnxn.png" alt="an image">
+
+                <div class="play-icon">
+                    <span>&#9658;</span>
+                    <!-- Play icon -->
+                </div>
+
+                <div class="yu">
+                    <h1 class="text">Liked songs <br>Playlist.2songs</h1>
+                </div>
+            </div>
+            <!-- </div> -->
+            <div class="image-container">
+                <img class="image" src="./imagess/ab676161000051742d405f4858ce3cd52d409c98.png" alt="an image">
+
+                <div class="play-icon">
+                    <span>&#9658;</span>
+                    <!-- Play icon -->
+                </div>
+
+                <div class="yu">
+                    <h1 class="text">Liked songs <br>Playlist.2songs</h1>
+                </div>
+            </div>
+            <!-- </div> -->
+            <div class="image-container">
+                <img class="image" src="./imagess/dacades.png" alt="an image">
+
+                <div class="play-icon">
+                    <span>&#9658;</span>
+                    <!-- Play icon -->
+                </div>
+
+                <div class="yu">
+                    <h1 class="text">Liked songs <br>Playlist.2songs</h1>
+                </div>
+            </div>
+            <!-- </div> -->
+            <div class="image-container">
+                <img class="image" src="./imagess/discover.png" alt="an image">
+
+                <div class="play-icon">
+                    <span>&#9658;</span>
+                    <!-- Play icon -->
+                </div>
+
+                <div class="yu">
+                    <h1 class="text">Liked songs <br>Playlist.2songs</h1>
+                </div>
+            </div>
+            <!-- </div> -->
+            <div class="image-container">
+                <img class="image" src="./imagess/blues.png" alt="an image">
+
+                <div class="play-icon">
+                    <span>&#9658;</span>
+                    <!-- Play icon -->
+                </div>
+
+                <div class="yu">
+                    <h1 class="text">Liked songs <br>Playlist.2songs</h1>
+                </div>
+            </div>
+            <!-- </div> -->
+
+    </section>
+    <section id="right">
+       <section id="idea">
+        <section class="circle"><div><svg class=".svg" xmlns="http://www.w3.org/2000/svg" height="20px" viewBox="0 -960 960 960" width="20px" fill="#5f6368"><path d="M480-481q-66 0-108-42t-42-108q0-66 42-108t108-42q66 0 108 42t42 108q0 66-42 108t-108 42ZM160-160v-94q0-38 19-65t49-41q67-30 128.5-45T480-420q62 0 123 15.5t127.92 44.69q31.3 14.13 50.19 40.97Q800-292 800-254v94H160Zm60-60h520v-34q0-16-9.5-30.5T707-306q-64-31-117-42.5T480-360q-57 0-111 11.5T252-306q-14 7-23 21.5t-9 30.5v34Zm260-321q39 0 64.5-25.5T570-631q0-39-25.5-64.5T480-721q-39 0-64.5 25.5T390-631q0 39 25.5 64.5T480-541Zm0-90Zm0 411Z"/></svg></div></section>
+        <section class="olaide"><p>Profile</p>
+            <h1>Olaide Aderoju</h1>
+            <p>1 Public Playlist . 5Following</p>
+        </section>
+       </section>
+
+      <section id="big">
+        <section id="next"><h1 class="h1b">Top track this month</h1>
+        <p>Only visible to you</p></section>
+        <section id="three">
+            <section><div class="image-container">
+                <img class="image" src="./imagess/dance.png" alt="an image">
+
+                <div class="play-icon">
+                    <span>&#9658;</span>
+                    <!-- Play icon -->
+                </div>
+
+                <div class="yuu">
+                    <h1 class="text">HIGH <br><P>HIFE</P></h1>
+                </div>
+            </div></section>
+            <section><H3>HIGH</H3> </section>
+            <section><H3>3;15</H3></section>
+        </section>
+      </section>
+      <section>
+        <div class="spotify-playlistss">
+            <h2>Public Playlist</h2>
+            <div class="list">
+              <div class="item">
+                <img src="./imagess/Morayo.png"/>
+                <div class="play">
+                  <span class="fa fa-play"></span>
+                </div>
+                l<h4>EyinjuEledumare</h4>
+                <p>By Olaide Aderoju</p>
+              </div>
+      </section>
+      <section>
+        <div class="spotify-playlists">
+            <h2>Following</h2>
+            <div class="list">
+              <div class="item">
+                <img src="./imagess/Morayo.png" />
+                <div class="play">
+                  <span class="fa fa-play"></span>
+                </div>
+                <h4>Morayo</h4>
+                <p>Artist</p>
+              </div>
+            <div class="list">
+              <div class="item">
+                <img src="./imagess/Morayo.png" />
+                <div class="play">
+                  <span class="fa fa-play"></span>
+                </div>
+                <h4>Morayo</h4>
+                <p>Artist</p>
+              </div>
+            <div class="list">
+              <div class="item">
+                <img src="./imagess/Morayo.png" />
+                <div class="play">
+                  <span class="fa fa-play"></span>
+                </div>
+                <h4>Morayo</h4>
+                <p>Artist</p>
+              </div>
+            <div class="list">
+              <div class="item">
+                <img src="./imagess/Morayo.png" />
+                <div class="play">
+                  <span class="fa fa-play"></span>
+                </div>
+                <h4>Morayo</h4>
+                <p>Artist</p>
+              </div>
+      </section>
+      <section id="footer">
+        <div class="line">
+            <h5>Company</h5>
+            <h5 class="hfives">About</h5>
+            <h5 class="hfives">Jompany</h5>
+            <h5 class="hfives">For the Record</h5>
+        </div>
+        <div  class="line">
+            <h5 >Communities</h5>
+            <h5 class="hfives">For Artist</h5>
+            <h5 class="hfives">Developers</h5>
+            <h5 class="hfives">Advertising</h5>
+            <h5 class="hfives">Investors</h5>
+            <h5 class="hfives">Vendors</h5>
+        </div>
+        <div class="line">
+            <h5>Useful links</h5>
+            <h5 class="hfives">Support</h5>
+            <h5 class="hfives">Free mobile app</h5>
+            
+        </div>
+        <div  class="line">
+            <h5>Sportify Plans</h5>
+            <h5 class="hfives">Premium</h5>
+            <h5 class="hfives">Individual</h5>
+            <h5 class="hfives">Premium Due</h5>
+            <h5 class="hfives">Premium Family</h5>
+            <h5 class="hfives">Premium student</h5>
+            <h5 class="hfives">Student</h5>
+            <h5 class="hfives">Sportify Free</h5>
+        </div>        
+        <div  class="line">
+            <h5>Sportify Plans</h5>
+            <h5 class="hfives">Premium</h5>
+            <h5 class="hfives">Individual</h5>
+            <h5 class="hfives">Premium Due</h5>
+            <h5 class="hfives">Premium Family</h5>
+            <h5 class="hfives">Premium student</h5>
+            <h5 class="hfives">Student</h5>
+            <h5 class="hfives">Sportify Free</h5>
+        </div>        
+    </section>
+    </div>
+    </section>
+    
+</section>
+
+
+
+</section>
+
+
+</body>
+</html>

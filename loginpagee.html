@@ -1,0 +1,1005 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LOGINPAGE</title>
+    <!-- <link rel="stylesheet" href="spo.css"> -->
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, Helvetica, sans-serif;
+            /* outline: 2px solid white; */
+        }
+
+        body {
+            background-color: blue;
+            font-family: Arial, Helvetica, sans-serif;
+            margin: 0;
+            padding: 0;
+            color: white;
+        }
+
+        .spotify-playlists {
+            padding: 10px 0px;
+        }
+
+        .spotify-playlists h2 {
+            color: #ffffff;
+            font-size: 22px;
+            margin-bottom: 20px;
+            cursor: pointer;
+        }
+
+        .spotify-playlists .list {
+            display: flex;
+            flex-direction: row;
+            gap: 10px;
+            overflow: hidden;
+        }
+
+        .spotify-playlists .list .item {
+            min-width: 140px;
+            width: 160px;
+            padding: 10px;
+            display: flex;
+            flex-direction: column;
+            background-color: #181818;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: all ease 0.4s;
+        }
+
+        .spotify-playlists .list .item:hover {
+            background-color: #252525;
+        }
+
+
+
+        .spotify-playlists .list .item img {
+            width: 100%;
+            border-radius: 50%;
+            margin-bottom: 10px;
+        }
+
+        .spotify-playlists .list .item .play {
+            position: relative;
+        }
+
+        .spotify-playlists .list .item .play .fa {
+            
+            position: absolute;
+            right: 10px;
+            top: -50px;
+            padding: 18px;
+            background-color: #1db954;
+            border-radius: 100%;
+            border:1px solid #1db954;
+            opacity: 0;
+            transition: all ease 0.4s;
+        }
+
+        .spotify-playlists .list .item:hover .play .fa {
+            opacity: 1;
+            transform: translateY(-20px);
+        }
+
+        .spotify-playlists .list .item h4 {
+            color: #ffffff;
+            font-size: 14px;
+            margin-bottom: 10px;
+            font-weight: 600;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .spotify-playlists .list .item p {
+            color: #989898;
+            font-size: 12px;
+            line-height: 20px;
+            font-weight: 500;
+        }
+
+        .spotify-playlists hr {
+            margin: 70px 0px 0px;
+            border-color: #636363;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 20px;
+            background-color: black;
+        }
+
+        nav ul {
+            list-style-type: none;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 20px;
+            text-align: center;
+        }
+
+        .logo {
+
+            display: block;
+            justify-content: right;
+            align-items: right;
+            gap: 20px;
+
+        }
+
+
+        nav li a {
+            text-decoration: none;
+            color: white;
+            font-size: 30px;
+        }
+
+        button {
+            width: 450px;
+            height: 50px;
+            background-color: rgb(31, 31, 31);
+            color: rgb(167, 167, 167);
+            border-radius: 20px;
+            font-size: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
+
+        .button2 {
+            width: 150px;
+            height: 40px;
+            border-radius: 20px 20px;
+            background-color: white;
+            color: black;
+            font-size: 15px;
+            font-weight: 700;
+            text-decoration: none;
+        }
+
+        .abutton2 {
+            text-decoration: none;
+            color: black;
+        }
+
+        svg {
+            width: 30px;
+            height: 30px;
+            align-items: left;
+            display: inline;
+        }
+
+        p {
+            font-size: 15px;
+            color: white;
+            display: flex;
+            text-align: center;
+        }
+
+        .asearch {
+            font-size: 15px;
+        }
+
+        .nav {
+            justify-content: center;
+            align-items: center;
+            display: flex;
+            text-align: center;
+        }
+
+        .profile {
+            width: 30px;
+            height: 30px;
+            background-color: red;
+            border-radius: 50%;
+            text-align: center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .container {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .image-container {
+            /* position: relative; */
+            display: flex;
+            flex-direction: row;
+            gap: 5px;
+        }
+
+        .image {
+            width: 08vh;
+            /* Adjust as needed */
+            height: 08vh;
+            border-radius: 8px;
+            /* Rounded corners for the image */
+        }
+
+        .play-icon {
+            position: absolute;
+            top: 37%;
+            right: 94%;
+            transform: translate(-50%, -50%);
+            font-size: 24px;
+            /* Smaller font size for the play icon */
+            /* background-color: green; */
+            padding: 8px;
+            /* Reduced padding for smaller size */
+            border-radius: 50%;
+            /* Circular background */
+            color: white;
+            opacity: 0;
+            /* Initially hidden */
+            pointer-events: none;
+            transition: opacity 0.3s ease, transform 0.3s ease;
+            /* Smooth fade-in effect */
+            margin-left: 250px;
+        }
+
+        .image-container:hover .play-icon {
+            opacity: 1;
+            /* Show the play icon on hover */
+            pointer-events: auto;
+            transform: translate(-50%, -50%) scale(1.1);
+            /* Slightly scale up on hover */
+        }
+
+        .yu {
+            /* background-color: #4c363e; */
+            /* Initial background color */
+            width: 300px;
+            height: 50px;
+            border-radius: 6px;
+            transition: background-color 0.3s ease;
+            /* Smooth background color transition */
+        }
+
+        .image-container:hover+.yu {
+            background-color: #6b4e57;
+            /* Change background color on hover */
+        }
+
+        .text {
+            color: white;
+            font-size: 15px;
+            font-weight: bolder;
+            padding: 10px;
+            text-align: start;
+            align-items: flex-start;
+            justify-content: flex-start;
+            margin: 0;
+
+
+        }
+
+        section {
+            background-color: black;
+            display: flex;
+            gap: 1.5%;
+
+
+        }
+
+        #left {
+            background-color: rgb(21, 21, 21);
+            width: 25%;
+            height: 500px;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            overflow-y: scroll;
+            margin: 10px;
+            padding: 20px;
+            border-radius: 10px;
+        }
+
+        #right {
+            background-color: rgb(21, 21, 21);
+            width: 72%;
+            height: 500px;
+            overflow-y: scroll;
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+            padding: 10px;
+            border-radius: 10px;
+            /* margin: 10px; */
+
+        }
+
+        .flex {
+            /* background-color: blue; */
+            display: flex;
+            gap: 17rem;
+        }
+
+        #button {
+            /* background-color: red; */
+            display: flex;
+            gap: 10px;
+        }
+
+        .button3 {
+            width: 100px;
+            height: 40px;
+            background-color: rgb(42, 42, 42);
+            color: white;
+            font-size: 15px;
+            font-weight: 600;
+            border: none;
+        }
+
+        #sticky {
+            display: flex;
+            position: sticky;
+        }
+
+        .buttonholder {
+            /* background-color: red; */
+
+        }
+
+        #images {
+
+            display: flex;
+            flex-direction: column;
+
+        }
+
+        .p9 {
+            text-align: start;
+        }
+
+        .img {
+            width: 135px;
+            height: 135px;
+            border-radius: 5px;
+        }
+
+        .img2 {
+            width: 135px;
+            height: 135px;
+            border-radius: 50%;
+            background-color: blue;
+        }
+
+        .img3 {
+            width: 450px;
+            height: 450px;
+            border-radius: 5px;
+            background-color: blue;
+        }
+
+        .row {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        #row {
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+        .logoimg {
+    width: 30px;
+}
+
+    </style>
+
+</head>
+
+<body>
+    <nav>
+        <div class="logo"><img class="logoimg" src="imagess/logo.png" alt=""></div>
+        <ul>
+            <li><a href="spotify.html"><svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px"
+                        fill="#b3b3b3">
+                        <path
+                            d="M240-200h120v-240h240v240h120v-360L480-740 240-560v360Zm-80 80v-480l320-240 320 240v480H520v-240h-80v240H160Zm320-350Z" />
+                    </svg></svg></a></li>
+            <li>
+                <button>
+                    <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px"
+                        fill="#b3b3b3">
+                        <path
+                            d="M784-120 532-372q-30 24-69 38t-83 14q-109 0-184.5-75.5T120-580q0-109 75.5-184.5T380-840q109 0 184.5 75.5T640-580q0 44-14 83t-38 69l252 252-56 56ZM380-400q75 0 127.5-52.5T560-580q0-75-52.5-127.5T380-760q-75 0-127.5 52.5T200-580q0 75 52.5 127.5T380-400Z" />
+                    </svg>
+                    <p><a class="asearch" href="search page.html">What do you want to play?</a></p>
+                    <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px"
+                        fill="#b3b3b3">
+                        <path
+                            d="M240-120v-80l40-40H160q-33 0-56.5-23.5T80-320v-440q0-33 23.5-56.5T160-840h320v80H160v440h640v-120h80v120q0 33-23.5 56.5T800-240H680l40 40v80H240Zm360-240L400-560l56-56 104 103v-327h80v327l104-103 56 56-200 200Z" />
+                    </svg>
+                </button>
+            </li>
+        </ul>
+
+        <ul>
+            <div class="nav">
+                <button class="button2"><a class="abutton2" href="signup.html">Explore Minimum</a></button>
+
+                <p><svg xmlns="http://www.w3.org/2000/svg" height="15px" viewBox="0 -960 960 960" width="15px"
+                        fill="#434343">
+                        <path
+                            d="m480-336 144-144-51-51-57 57v-150h-72v150l-57-57-51 51 144 144Zm0 240q-79 0-149-30t-122.5-82.5Q156-261 126-331T96-480q0-80 30-149.5t82.5-122Q261-804 331-834t149-30q80 0 149.5 30t122 82.5Q804-699 834-629.5T864-480q0 79-30 149t-82.5 122.5Q699-156 629.5-126T480-96Zm0-72q130 0 221-91t91-221q0-130-91-221t-221-91q-130 0-221 91t-91 221q0 130 91 221t221 91Zm0-312Z" />
+                    </svg>
+                    Install apps</p>
+                <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px"
+                    fill="#434343">
+                    <path
+                        d="M160-200v-80h80v-280q0-83 50-147.5T420-792v-28q0-25 17.5-42.5T480-880q25 0 42.5 17.5T540-820v28q80 20 130 84.5T720-560v280h80v80H160Zm320-300Zm0 420q-33 0-56.5-23.5T400-160h160q0 33-23.5 56.5T480-80ZM320-280h320v-280q0-66-47-113t-113-47q-66 0-113 47t-47 113v280Z" />
+                </svg>
+                <div class="profile">
+                    <p><a href="profile.html">O</a></p>
+                </div>
+            </div>
+        </ul>
+    </nav>
+
+    <section>
+        <section id="left">
+            <section id="sticky">
+                <div class="ex1">
+                    <section class="one">
+                        <p> <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px"
+                                fill="#b3b3b3">
+                                <path
+                                    d="M240-80q-50 0-85-35t-35-85v-560q0-50 35-85t85-35h440v640H240q-17 0-28.5 11.5T200-200q0 17 11.5 28.5T240-160h520v-640h80v720H240Zm120-240h240v-480H360v480Zm-80 0v-480h-40q-17 0-28.5 11.5T200-760v447q10-3 19.5-5t20.5-2h40Zm-80-480v487-487Z" />
+                            </svg>Your Library <svg xmlns="http://www.w3.org/2000/svg" height="24px"
+                                viewBox="0 -960 960 960" width="24px" fill="#b3b3b3">
+                                <path d="M440-440H200v-80h240v-240h80v240h240v80H520v240h-80v-240Z" />
+                            </svg> </p>
+                    </section>
+                    <section id="button">
+                        <button class="button3">Playlist</button>
+                        <button class="button3">Artist</button>
+                        <button class="button3">Album</button>
+                    </section>
+            </section>
+
+            <div class="container">
+                <div class="flex">
+                    <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px"
+                        fill="#b3b3b3">
+                        <path
+                            d="M784-120 532-372q-30 24-69 38t-83 14q-109 0-184.5-75.5T120-580q0-109 75.5-184.5T380-840q109 0 184.5 75.5T640-580q0 44-14 83t-38 69l252 252-56 56ZM380-400q75 0 127.5-52.5T560-580q0-75-52.5-127.5T380-760q-75 0-127.5 52.5T200-580q0 75 52.5 127.5T380-400Z" />
+
+                    </svg>
+                    <p>Recents</p>
+                </div>
+
+                <div class="image-container">
+                    <img class="image" src="./imagess/comedy.png" alt="an image">
+
+                    <div class="play-icon">
+                        <span><svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#5f6368"><path d="M320-200v-560l440 280-440 280Zm80-280Zm0 134 210-134-210-134v268Z"/></svg></span>
+                        Play icon
+                    </div>
+
+                    <div class="yu">
+                        <h1 class="text">Liked songs <br>Playlist.2songs</h1>
+                    </div>
+                </div>
+                <!-- </div> -->
+                <div class="image-container">
+                    <img class="image" src="./imagess/comedy.png" alt="an image">
+
+                    <div class="play-icon">
+                        <span>&#9658;</span>
+                        <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#5f6368"><path d="M320-200v-560l440 280-440 280Zm80-280Zm0 134 210-134-210-134v268Z"/></svg>
+                        <!-- Play icon -->
+                    </div>
+
+                    <div class="yu">
+                        <h1 class="text">Liked songs <br>Playlist.2songs</h1>
+                    </div>
+                </div>
+                <!-- </div> -->
+                <div class="image-container">
+                    <img class="image" src="./imagess/comedy.png" alt="an image">
+
+                    <div class="play-icon">
+                        <span>&#9658;</span>
+                        <!-- Play icon -->
+                    </div>
+
+                    <div class="yu">
+                        <h1 class="text">Liked songs <br>Playlist.2songs</h1>
+                    </div>
+                </div>
+                <!-- </div> -->
+                <div class="image-container">
+                    <img class="image" src="./imagess/comedy.png" alt="an image">
+
+                    <div class="play-icon">
+                        <span>&#9658;</span>
+                        <!-- Play icon -->
+                    </div>
+
+                    <div class="yu">
+                        <h1 class="text">Liked songs <br>Playlist.2songs</h1>
+                    </div>
+                </div>
+                <!-- </div> -->
+                <div class="image-container">
+                    <img class="image" src="./imagess/comedy.png" alt="an image">
+
+                    <div class="play-icon">
+                        <span>&#9658;</span>
+                        <!-- Play icon -->
+                    </div>
+
+                    <div class="yu">
+                        <h1 class="text">Liked songs <br>Playlist.2songs</h1>
+                    </div>
+                </div>
+                <!-- </div> -->
+                <div class="image-container">
+                    <img class="image" src="./imagess/comedy.png" alt="an image">
+
+                    <div class="play-icon">
+                        <span>&#9658;</span>
+                        <!-- Play icon -->
+                    </div>
+
+                    <div class="yu">
+                        <h1 class="text">Liked songs <br>Playlist.2songs</h1>
+                    </div>
+                </div>
+                <!-- </div> -->
+                <div class="image-container">
+                    <img class="image" src="./imagess/comedy.png" alt="an image">
+
+                    <div class="play-icon">
+                        <span>&#9658;</span>
+                        <!-- Play icon -->
+                    </div>
+
+                    <div class="yu">
+                        <h1 class="text">Liked songs <br>Playlist.2songs</h1>
+                    </div>
+                </div>
+                <!-- </div> -->
+
+        </section>
+        <section id="right">
+            <section class="buttonholder">
+                <button class="button3">All</button>
+                <button class="button3">Music</button>
+                <button class="button3">Podcasts</button>
+            </section>
+            <div class="spotify-playlists">
+                <h2>Popular artist</h2>
+
+                <div class="list">
+                    <div class="item">
+                        <img src="imagess/fire boy.png" />
+                        <div class="play">
+                            <span class="fa fa-play"><svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#5f6368"><path d="M320-200v-560l440 280-440 280Z"/></svg></span>
+                        </div>
+                        <h4>Today's Top Hits</h4>
+                        <p>Olivia Rodrigo is on top of the Hottest 50!</p>
+                    </div>
+
+                    <div class="item">
+                        <img src="./imagess/davido.png" />
+                        <div class="play">
+                            <span class="fa fa-play"><svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="##000000"><path d="M320-200v-560l440 280-440 280Z"/></svg></span>
+                        </div>
+                        <h4>RapCaviar</h4>
+                        <p>New Music from Cardi B, Megan Thee Stallion an...</p>
+                    </div>
+
+                    <div class="item">
+                        <img src="./imagess/askh.png" />
+                        <div class="play">
+                            <span class="fa fa-play"><svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="##000000"><path d="M320-200v-560l440 280-440 280Z"/></svg></span>
+                        </div>
+                        <h4>All out 2010s</h4>
+                        <p>The biggest spmgs pf tje 2010s.</p>
+                    </div>
+
+                    <div class="item">
+                        <img src="./imagess/Rema (2).png" />
+                        <div class="play">
+                            <span class="fa fa-play"><svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="##000000"><path d="M320-200v-560l440 280-440 280Z"/></svg></span>
+                        </div>
+                        <h4>Rema</h4>
+                        <p>Artist</p>
+                    </div>
+
+                    <div class="item">
+                        <img src="./imagess/jiggy.png" />
+                        <div class="play">
+                            <span class="fa fa-play"><svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="##000000"><path d="M320-200v-560l440 280-440 280Z"/></svg></span>
+                        </div>
+                        <h4>Chill Hits</h4>
+                        <p>Kick back to the best new and recent chill hits</p>
+                    </div>
+
+
+                </div>
+                <div class="spotify-playlists">
+                    <h2>Popular artist</h2>
+
+                    <div class="list">
+                        <div class="item">
+                            <img src="imagess/fire boy.png" />
+                            <div class="play">
+                                <span class="fa fa-play"><svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="##000000"><path d="M320-200v-560l440 280-440 280Z"/></svg></span>
+                            </div>
+                            <h4>Today's Top Hits</h4>
+                            <p>Olivia Rodrigo is on top of the Hottest 50!</p>
+                        </div>
+
+                        <div class="item">
+                            <img src="./imagess/davido.png" />
+                            <div class="play">
+                                <span class="fa fa-play"><svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="##000000"><path d="M320-200v-560l440 280-440 280Z"/></svg></span>
+                            </div>
+                            <h4>RapCaviar</h4>
+                            <p>New Music from Cardi B, Megan Thee Stallion an...</p>
+                        </div>
+
+                        <div class="item">
+                            <img src="./imagess/askh.png" />
+                            <div class="play">
+                                <span class="fa fa-play"><svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="##000000"><path d="M320-200v-560l440 280-440 280Z"/></svg></span>
+                            </div>
+                            <h4>All out 2010s</h4>
+                            <p>The biggest spmgs pf tje 2010s.</p>
+                        </div>
+
+                        <div class="item">
+                            <img src="./imagess/Rema (2).png" />
+                            <div class="play">
+                                <span class="fa fa-play"><svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="##000000"><path d="M320-200v-560l440 280-440 280Z"/></svg></span>
+                            </div>
+                            <h4>Rema</h4>
+                            <p>Artist</p>
+                        </div>
+
+                        <div class="item">
+                            <img src="./imagess/jiggy.png" />
+                            <div class="play">
+                                <span class="fa fa-play"><svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="##000000"><path d="M320-200v-560l440 280-440 280Z"/></svg></span>
+                            </div>
+                            <h4>Chill Hits</h4>
+                            <p>Kick back to the best new and recent chill hits</p>
+                        </div>
+
+
+                    </div>
+                    <div class="spotify-playlists">
+                        <h2>Popular artist</h2>
+
+                        <div class="list">
+                            <div class="item">
+                                <img src="imagess/fire boy.png" />
+                                <div class="play">
+                                    <span class="fa fa-play"><svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="##000000"><path d="M320-200v-560l440 280-440 280Z"/></svg></span>
+                                </div>
+                                <h4>Today's Top Hits</h4>
+                                <p>Olivia Rodrigo is on top of the Hottest 50!</p>
+                            </div>
+
+                            <div class="item">
+                                <img src="./imagess/davido.png" />
+                                <div class="play">
+                                    <span class="fa fa-play"><svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="##000000"><path d="M320-200v-560l440 280-440 280Z"/></svg></span>
+                                </div>
+                                <h4>RapCaviar</h4>
+                                <p>New Music from Cardi B, Megan Thee Stallion an...</p>
+                            </div>
+
+                            <div class="item">
+                                <img src="./imagess/askh.png" />
+                                <div class="play">
+                                    <span class="fa fa-play"><svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="##000000"><path d="M320-200v-560l440 280-440 280Z"/></svg>
+                                </div>
+                                <h4>All out 2010s</h4>
+                                <p>The biggest spmgs pf tje 2010s.</p>
+                            </div>
+
+                            <div class="item">
+                                <img src="./imagess/Rema (2).png" />
+                                <div class="play"><svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="##000000"><path d="M320-200v-560l440 280-440 280Z"/></svg></span>
+                                </div>
+                                <h4>Rema</h4>
+                                <p>Artist</p>
+                            </div>
+
+                            <div class="item">
+                                <img src="./imagess/jiggy.png" />
+                                <div class="play">
+                                    <span class="fa fa-play"><svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="##000000"><path d="M320-200v-560l440 280-440 280Z"/></svg>
+                                </div>
+                                <h4>Chill Hits</h4>
+                                <p>Kick back to the best new and recent chill hits</p>
+                            </div>
+
+
+                        </div>
+                        <div class="spotify-playlists">
+                            <h2>Popular artist</h2>
+
+                            <div class="list">
+                                <div class="item">
+                                    <img src="imagess/fire boy.png" />
+                                    <div class="play">
+                                        <span class="fa fa-play"><svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="##000000"><path d="M320-200v-560l440 280-440 280Z"/></svg></span>
+                                    </div>
+                                    <h4>Today's Top Hits</h4>
+                                    <p>Olivia Rodrigo is on top of the Hottest 50!</p>
+                                </div>
+
+                                <div class="item">
+                                    <img src="./imagess/davido.png" />
+                                    <div class="play">
+                                        <span class="fa fa-play"><svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="##000000"><path d="M320-200v-560l440 280-440 280Z"/></svg></span>
+                                    </div>
+                                    <h4>RapCaviar</h4>
+                                    <p>New Music from Cardi B, Megan Thee Stallion an...</p>
+                                </div>
+
+                                <div class="item">
+                                    <img src="./imagess/askh.png" />
+                                    <div class="play">
+                                        <span class="fa fa-play"><svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="##000000"><path d="M320-200v-560l440 280-440 280Z"/></svg></span>
+                                    </div>
+                                    <h4>All out 2010s</h4>
+                                    <p>The biggest spmgs pf tje 2010s.</p>
+                                </div>
+
+                                <div class="item">
+                                    <img src="./imagess/Rema (2).png" />
+                                    <div class="play">
+                                        <span class="fa fa-play"><svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="##000000"><path d="M320-200v-560l440 280-440 280Z"/></svg></span>
+                                    </div>
+                                    <h4>Rema</h4>
+                                    <p>Artist</p>
+                                </div>
+
+                                <div class="item">
+                                    <img src="./imagess/jiggy.png" />
+                                    <div class="play">
+                                        <span class="fa fa-play"><svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="##000000"><path d="M320-200v-560l440 280-440 280Z"/></svg></span>
+                                    </div>
+                                    <h4>Chill Hits</h4>
+                                    <p>Kick back to the best new and recent chill hits</p>
+                                </div>
+
+
+                            </div>
+                            <div class="spotify-playlists">
+                                <h2>Popular artist</h2>
+
+                                <div class="list">
+                                    <div class="item">
+                                        <img src="imagess/fire boy.png" />
+                                        <div class="play">
+                                            <span class="fa fa-play"><svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="##000000"><path d="M320-200v-560l440 280-440 280Z"/></svg></span>
+                                        </div>
+                                        <h4>Today's Top Hits</h4>
+                                        <p>Olivia Rodrigo is on top of the Hottest 50!</p>
+                                    </div>
+
+                                    <div class="item">
+                                        <img src="./imagess/davido.png" />
+                                        <div class="play">
+                                            <span class="fa fa-play"><svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="##000000"><path d="M320-200v-560l440 280-440 280Z"/></svg></span>
+                                        </div>
+                                        <h4>RapCaviar</h4>
+                                        <p>New Music from Cardi B, Megan Thee Stallion an...</p>
+                                    </div>
+
+                                    <div class="item">
+                                        <img src="./imagess/askh.png" />
+                                        <div class="play">
+                                            <span class="fa fa-play"><svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="##000000"><path d="M320-200v-560l440 280-440 280Z"/></svg></span>
+                                        </div>
+                                        <h4>All out 2010s</h4>
+                                        <p>The biggest spmgs pf tje 2010s.</p>
+                                    </div>
+
+                                    <div class="item">
+                                        <img src="./imagess/Rema (2).png" />
+                                        <div class="play">
+                                            <span class="fa fa-play"><svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="##000000"><path d="M320-200v-560l440 280-440 280Z"/></svg></span>
+                                        </div>
+                                        <h4>Rema</h4>
+                                        <p>Artist</p>
+                                    </div>
+
+                                    <div class="item">
+                                        <img src="./imagess/jiggy.png" />
+                                        <div class="play">
+                                            <span class="fa fa-play"><svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="##000000"><path d="M320-200v-560l440 280-440 280Z"/></svg></span>
+                                        </div>
+                                        <h4>Chill Hits</h4>
+                                        <p>Kick back to the best new and recent chill hits</p>
+                                    </div>
+
+
+                                </div>
+                                <div class="spotify-playlists">
+                                    <h2>Popular artist</h2>
+
+                                    <div class="list">
+                                        <div class="item">
+                                            <img src="imagess/fire boy.png" />
+                                            <div class="play">
+                                                <span class="fa fa-play"><svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="##000000"><path d="M320-200v-560l440 280-440 280Z"/></svg></span>
+                                            </div>
+                                            <h4>Today's Top Hits</h4>
+                                            <p>Olivia Rodrigo is on top of the Hottest 50!</p>
+                                        </div>
+
+                                        <div class="item">
+                                            <img src="./imagess/davido.png" />
+                                            <div class="play"><svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="##000000"><path d="M320-200v-560l440 280-440 280Z"/></svg></span>
+                                            </div>
+                                            <h4>RapCaviar</h4>
+                                            <p>New Music from Cardi B, Megan Thee Stallion an...</p>
+                                        </div>
+
+                                        <div class="item">
+                                            <img src="./imagess/askh.png" />
+                                            <div class="play">
+                                                <span class="fa fa-play"><svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="##000000"><path d="M320-200v-560l440 280-440 280Z"/></svg></span>
+                                            </div>
+                                            <h4>All out 2010s</h4>
+                                            <p>The biggest spmgs pf tje 2010s.</p>
+                                        </div>
+
+                                        <div class="item">
+                                            <img src="./imagess/Rema (2).png" />
+                                            <div class="play">
+                                                <span class="fa fa-play"><svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="##000000"><path d="M320-200v-560l440 280-440 280Z"/></svg></span>
+                                            </div>
+                                            <h4>Rema</h4>
+                                            <p>Artist</p>
+                                        </div>
+
+                                        <div class="item">
+                                            <img src="./imagess/jiggy.png" />
+                                            <div class="play">
+                                                <span class="fa fa-play"><svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="##000000"><path d="M320-200v-560l440 280-440 280Z"/></svg></span>
+                                            </div>
+                                            <h4>Chill Hits</h4>
+                                            <p>Kick back to the best new and recent chill hits</p>
+                                        </div>
+
+
+                                    </div>
+                                    <div class="spotify-playlists">
+                                        <h2>Popular artist</h2>
+
+                                        <div class="list">
+                                            <div class="item">
+                                                <img src="imagess/fire boy.png" />
+                                                <div class="play">
+                                                    <span class="fa fa-play"><svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="##000000"><path d="M320-200v-560l440 280-440 280Z"/></svg></span>
+                                                </div>
+                                                <h4>Today's Top Hits</h4>
+                                                <p>Olivia Rodrigo is on top of the Hottest 50!</p>
+                                            </div>
+
+                                            <div class="item">
+                                                <img src="./imagess/davido.png" />
+                                                <div class="play">
+                                                    <span class="fa fa-play"><svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="##000000"><path d="M320-200v-560l440 280-440 280Z"/></svg></span>
+                                                </div>
+                                                <h4>RapCaviar</h4>
+                                                <p>New Music from Cardi B, Megan Thee Stallion an...</p>
+                                            </div>
+
+                                            <div class="item">
+                                                <img src="./imagess/askh.png" />
+                                                <div class="play">
+                                                    <span class="fa fa-play"><svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="##000000"><path d="M320-200v-560l440 280-440 280Z"/></svg></span>
+                                                </div>
+                                                <h4>All out 2010s</h4>
+                                                <p>The biggest spmgs pf tje 2010s.</p>
+                                            </div>
+
+                                            <div class="item">
+                                                <img src="./imagess/Rema (2).png" />
+                                                <div class="play">
+                                                    <span class="fa fa-play"><svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="##000000"><path d="M320-200v-560l440 280-440 280Z"/></svg></span>
+                                                </div>
+                                                <h4>Rema</h4>
+                                                <p>Artist</p>
+                                            </div>
+                                            <div class="item">
+                                                <img src="./imagess/chill'.png" />
+                                                <div class="play">
+                                                    <span class="fa fa-play"><svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="##000000"><path d="M320-200v-560l440 280-440 280Z"/></svg></span>
+                                                </div>
+                                                <h4>Rema</h4>
+                                                <p>Artist</p>
+                                            </div>
+
+                                            
+
+                                        </div>
+                                        <div class="spotify-playlists">
+                                            <h2>Popular artist</h2>
+
+                                            <div class="list">
+                                                <div class="item">
+                                                    <img src="imagess/fire boy.png" />
+                                                    <div class="play">
+                                                        <span class="fa fa-play"><svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="##000000"><path d="M320-200v-560l440 280-440 280Z"/></svg></span>
+                                                    </div>
+                                                    <h4>Today's Top Hits</h4>
+                                                    <p>Olivia Rodrigo is on top of the Hottest 50!</p>
+                                                </div>
+
+                                                <div class="item">
+                                                    <img src="./imagess/davido.png" />
+                                                    <div class="play">
+                                                        <span class="fa fa-play"><svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="##000000"><path d="M320-200v-560l440 280-440 280Z"/></svg></span>
+                                                    </div>
+                                                    <h4>RapCaviar</h4>
+                                                    <p>New Music from Cardi B, Megan Thee Stallion an...</p>
+                                                </div>
+
+                                                <div class="item">
+                                                    <img src="./imagess/askh.png" />
+                                                    <div class="play">
+                                                        <span class="fa fa-play"><svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="##000000"><path d="M320-200v-560l440 280-440 280Z"/></svg></span>
+                                                    </div>
+                                                    <h4>All out 2010s</h4>
+                                                    <p>The biggest spmgs pf tje 2010s.</p>
+                                                </div>
+
+                                                <div class="item">
+                                                    <img src="./imagess/Rema (2).png" />
+                                                    <div class="play">
+                                                        <span class="fa fa-play"><svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="##000000"><path d="M320-200v-560l440 280-440 280Z"/></svg>
+                                                    </div>
+                                                    <h4>Rema</h4>
+                                                    <p>Artist</p>
+                                                </div>
+
+                                                <div class="item">
+                                                    <img src="./imagess/jiggy.png" />
+                                                    <div class="play">
+                                                        <span class="fa fa-play"><svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="##000000"><path d="M320-200v-560l440 280-440 280Z"/></svg></span>
+                                                    </div>
+                                                    <h4>Chill Hits</h4>
+                                                    <p>Kick back to the best new and recent chill hits</p>
+                                                </div>
+
+
+                                            </div>
+        </section>
+
+
+        <hr />
+        </div>
+
+    </section>
+    </section>
+
+
+</body>
+
+</html>

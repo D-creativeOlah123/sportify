@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Hover Effect</title>
+    <style>
+      body {
+        background-color: black;
+      }
+
+      .container {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .image-container {
+        position: relative;
+        display:flex;
+      }
+
+      .image {
+        width: 10vh; /* Adjust as needed */
+        height: 10vh;
+        border-radius: 10px; /* Rounded corners for the image */
+      }
+
+      .play-icon {
+        position: absolute;
+        top: 57%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        font-size: 12px; /* Smaller font size for the play icon */
+        background-color: green;
+        padding: 8px; /* Reduced padding for smaller size */
+        border-radius: 50%; /* Circular background */
+        color: black;
+        opacity: 0; /* Initially hidden */
+        pointer-events: none;
+        transition: opacity 0.3s ease, transform 0.3s ease; /* Smooth fade-in effect */
+        margin-left: 250px;
+      }
+
+      .image-container:hover .play-icon {
+        opacity: 1; /* Show the play icon on hover */
+        pointer-events: auto;
+        transform: translate(-50%, -50%) scale(1.1); /* Slightly scale up on hover */
+      }
+
+      .yu {
+        background-color: #4c363e; /* Initial background color */
+        width: 40vh;
+        height: 7vh;
+        border-radius: 6px;
+        margin-left: 50px;
+        margin-top: -53px;
+        transition: background-color 0.3s ease; /* Smooth background color transition */
+      }
+
+      .image-container:hover + .yu {
+        background-color: #6b4e57; /* Change background color on hover */
+      }
+
+      .text {
+        color: white;
+        font-size: 20px;
+        font-weight: bolder;
+        padding: 10px;
+        text-align: center;
+        margin: 0;
+        margin-left: -58px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="image-container">
+        <img
+          src="../../Documents/Sportify website/asake.png"
+          alt="Image"
+          class="image"
+        />
+        <div class="play-icon">
+          <span>&#9658;</span>
+          <!-- Play icon -->
+        </div>
+      </div>
+      <div class="yu">
+        <h1 class="text">The Messenger</h1>
+      </div>
+    </div>
+  </body>
+</html>
